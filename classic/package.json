@@ -1,0 +1,16 @@
+{
+  "name": "mage-game",
+  "version": "1.0.0",
+  "description": "a game about mage",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Boredom Industries",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^18.0.1",
+    "nes.css": "^2.3.0"
+  }
+}
