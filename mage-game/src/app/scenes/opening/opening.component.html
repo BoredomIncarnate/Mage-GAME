@@ -1,0 +1,18 @@
+<div class="nes-container with-title is-centered">
+    <p class="title animated pulse">{{title}}</p>
+    <div class="dialog">
+        <p>> WELCOME! What a journey you must have taken in order to get here.</p>
+        <p>> Here at The Uni, we have one criteria for admision, you must be able to get here. And?
+            You are here! How joyous it is, yes?
+        <p>> Of course it is!</p>
+        <label for="name_field">> First, What is your name?</label>
+    </div>
+    <input type="text" id="name_field" class="nes-input user-text-input" required [(ngModel)]="player.name" />
+    <hr>
+    <div class="nes-container is-rounded" id="confirm-container">
+        <p>{{player.name}}, is it?</p>
+    </div>
+    <a class="nes-btn is-success" (click)="confirmName()">Indeed!</a>
+</div>
+
+<router-outlet></router-outlet>

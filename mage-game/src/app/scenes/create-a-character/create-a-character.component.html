@@ -1,0 +1,36 @@
+<div class="nes-container with-title is-centered">
+    <p class="title animated pulse">{{title}}</p>
+    <div class="dialog">
+        <p>> Now, you must chose your magic type.</p>
+        <p>> Don't worry too much, you can always learn other types of magic later.
+        <p>> This is just the first type of magic you wish to learn.</p>
+        <label>> Now, {{this.player.name}}, what shall it be?</label>
+        <div class="options-container nes-container">
+            <div class="options-row is-centered">
+                <label>
+                    <input type="radio" class="nes-radio" (change)="selectMagicType(magicType.Fire)" name="answer" checked />
+                    <span>Fire</span>
+                </label>
+
+                <label class="last-column">
+                    <input type="radio" class="nes-radio" (change)="selectMagicType(magicType.Ice)" name="answer" />
+                    <span>Ice</span>
+                </label>
+            </div>
+            <div class="is-centered">
+                <label>
+                    <input type="radio" class="nes-radio" (change)="selectMagicType(magicType.Light)" name="answer" />
+                    <span>Light</span>
+                </label>
+
+                <label class="last-column">
+                    <input type="radio" class="nes-radio" (change)="selectMagicType(magicType.Dark)" name="answer" />
+                    <span>Dark</span>
+                </label>
+            </div>
+        </div>
+        <button class="yes-button" (click)="yes()">Yes</button>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
