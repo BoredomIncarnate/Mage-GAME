@@ -20,7 +20,7 @@ export class BattleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.player.spells.first.name);
+    console.log(this.player.spells.first);
   }
 
   generateEnemy(): void {

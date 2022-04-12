@@ -2,10 +2,10 @@ import { MagicType } from "../enums/magic-type";
 import { Spell } from "./spell";
 
 export interface Mage {
-    name: String;
+    name: string;
     type: MagicType;
-    health: Number;
-    level: Number;
+    health: number;
+    level: number;
     spells: {
         first: Spell,
         second: Spell,

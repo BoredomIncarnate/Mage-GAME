@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { MagicType } from '../enums/magic-type';
 import { Spell } from '../structs/spell';
+import { rollplus } from './dice.service';
 
 @Injectable({
     providedIn: 'root',
@@ -7,7 +9,7 @@ import { Spell } from '../structs/spell';
 
 export class SpellsService {
 
-    spells: Spell[] = [];
+    private spells: Spell[] = [];
     private prefixes: String[] = [];
     private roots: String[] = [];
 
@@ -16,27 +18,31 @@ export class SpellsService {
         this.generateRoots();
     }
 
-    generateSpell(): Spell {
+    generateSpell(magicType: MagicType, level: number): Spell {
         var newSpell = {} as Spell;
-        newSpell.name = this.generateName();
+        newSpell.name = this.rollName();
+        newSpell.baseDamage = this.rollDamage(level);
+        newSpell.type = magicType;
         this.spells.push(newSpell);
         return newSpell;
     }
 
-    generatePrefixes(): void {
+    private generatePrefixes(): void {
         this.prefixes = ['big', 'red', 'blue', 'green', 'bright', 'buldging', 'gasping']
     }
 
-    generateRoots(): void {
+    private generateRoots(): void {
         this.roots = ['magic', 'spell', 'hex', 'chant', 'aura', 'illusion']
     }
 
-    generateName(): String {
+    private rollName(): string {
         var i = Math.floor(Math.random() * this.prefixes.length);
         var j = Math.floor(Math.random() * this.roots.length);
-        console.log(i);
-        console.log(j);
-        return `${this.prefixes[i]}${this.roots[j]}`;
+        return `${this.prefixes[i]} ${this.roots[j]}`;
+    }
+
+    private rollDamage(level: number): number {
+        return rollplus(12,level);
     }
 
 }

@@ -1,7 +1,7 @@
 import { MagicType } from "../enums/magic-type";
 
 export interface Spell {
-    name: String;
+    name: string;
     type: MagicType;
-    baseDamage: Number;
+    baseDamage: number;
 }

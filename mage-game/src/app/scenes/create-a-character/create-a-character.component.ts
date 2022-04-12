@@ -21,7 +21,7 @@ export class CreateACharacterComponent implements OnInit {
     private audioService: AudioService,
     private spellsService: SpellsService,
     private _router: Router) { 
-      this.player = storeService.player;
+      this.player = this.storeService.player;
     }
 
   ngOnInit(): void {
@@ -33,8 +33,9 @@ export class CreateACharacterComponent implements OnInit {
   }
 
   yes(): void {
+    this.player.level = 1;
+    this.player.spells.first = this.spellsService.generateSpell(this.player.type, this.player.level);
     this._router.navigate(['battle']);
-    this.player.spells.first = this.spellsService.generateSpell();
   }
 
 }
