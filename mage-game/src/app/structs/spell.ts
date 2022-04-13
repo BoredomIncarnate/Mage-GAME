@@ -1,6 +1,6 @@
 import { MagicType } from "../enums/magic-type";
 
-export interface Spell {
+export type Spell = {
     name: string;
     type: MagicType;
     baseDamage: number;

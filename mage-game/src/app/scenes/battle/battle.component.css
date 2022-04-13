@@ -1,0 +1,42 @@
+.enemy-container {
+    float: right;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    width: 25%;
+}
+
+.player-container {
+    float: left;
+    margin-top: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    width: 70%;
+}
+
+#choices {
+    width: auto;
+}
+
+.info-container {
+    float: left;
+    margin: 2%;
+    height: 100%;
+    width: auto;
+}
+
+.roll-container {
+    float: left;
+    margin: 2%;
+    height: 100%;
+    width: auto;
+}
+
+.player-spell-block {
+    display: inline-block;
+    height: 100%;
+}
+
+.player-choice-block {
+    display: block;
+}

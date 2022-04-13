@@ -35,6 +35,9 @@ export class CreateACharacterComponent implements OnInit {
   yes(): void {
     this.player.level = 1;
     this.player.spells.first = this.spellsService.generateSpell(this.player.type, this.player.level);
+    this.player.spells.second = this.spellsService.generateSpell(this.player.type, this.player.level);
+    this.player.spells.third = this.spellsService.generateSpell(this.player.type, this.player.level);
+    this.player.spells.fourth = this.spellsService.generateSpell(this.player.type, this.player.level);
     this._router.navigate(['battle']);
   }
 

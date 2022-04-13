@@ -6,3 +6,5 @@ export const roll = (sides: number) => {
 export const rollplus = (sides: number, mod: number) => {
     return roll(sides) + mod;
 }
+
+export const two = (base: number) => 2 * base;

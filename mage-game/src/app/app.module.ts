@@ -10,6 +10,7 @@ import { CreateACharacterComponent } from './scenes/create-a-character/create-a-
 import { OpeningComponent } from './scenes/opening/opening.component';
 import { BattleComponent } from './scenes/battle/battle.component';
 import { SpellsService } from './services/spells.service';
+import { MageService } from './services/mage.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,12 @@ import { SpellsService } from './services/spells.service';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [StoreService, AudioService, SpellsService],
+  providers: [
+    StoreService,
+    AudioService,
+    SpellsService,
+    MageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

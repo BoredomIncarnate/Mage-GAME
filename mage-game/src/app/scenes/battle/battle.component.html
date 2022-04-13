@@ -1,1 +1,84 @@
-<p>battle works!</p>
+<div class="nes-container with-title">
+    <p class="title">Battle!</p>
+    <p>> You've encountered a {{enemy.name}}!</p>
+    <p>> Kill it.</p>
+</div>
+<div class="enemy-container nes-container with-title">
+    <p class="title">{{enemy.name}}!</p>
+    <progress class="nes-progress is-error" value="{{enemy.health}}" max="{{enemy.maxHealth}}"></progress>
+</div>
+
+<div class="player-container nes-container with-title">
+    <p class="title">{{player.name}}!</p>
+    <div id="choices" class="player-spell-block">
+        <div class="info-container nes-container with-title">
+            <div>
+                <label>
+                    <input (change)="playerSelectAttack(this.player.spells.first)" type="radio" class="nes-radio"
+                        name="answer" checked />
+                    <span>{{this.player.spells.first.name}}</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input (change)="playerSelectAttack(this.player.spells.second)" type="radio" class="nes-radio"
+                        name="answer" />
+                    <span>{{this.player.spells.second.name}}</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input (change)="playerSelectAttack(this.player.spells.third)" type="radio" class="nes-radio"
+                        name="answer" />
+                    <span>{{this.player.spells.third.name}}</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input (change)="playerSelectAttack(this.player.spells.fourth)" type="radio" class="nes-radio"
+                        name="answer" />
+                    <span>{{this.player.spells.fourth.name}}</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="player-spell-block">
+        <div class="info-container nes-container with-title">
+            <p class="title">Spell Info</p>
+            <div class="lists">
+                <ul class="nes-list is-disc">
+                    <li>Damage: {{this.chosenSpell.baseDamage.toString()}}</li>
+                    <li>Type: {{magicTypeString(this.chosenSpell.type)}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="player-spell-block">
+        <div class="roll-container nes-container with-title">
+            <p class="title">Mod Roll</p>
+            <span><button class="nes-btn is-primary">Roll</button> => {{roll}}</span>
+        </div>
+    </div>
+    <div class="player-choice-block">
+        <button class="nes-btn is-error" (click)="playerAttack()">Attack!</button>
+        <button class="nes-btn is-warning">Inspect!</button>
+
+        <div>
+            <button *ngIf="defeat" (click)="endBattle()">End Battle</button>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="info-container nes-container with-title">
+    <p class="title">Spell Info</p>
+    <div class="lists">
+        <ul class="nes-list is-disc">
+            <li>Damage: {{this.chosenSpell.baseDamage.toString()}}</li>
+            <li>Type: {{magicTypeString(this.chosenSpell.type)}}</li>
+        </ul>
+    </div>
+</div>
+<div class="roll-container nes-container with-title">
+    <p class="title">Mod Roll</p>
+    <button class="nes-btn is-primary">Roll</button>
+</div> -->

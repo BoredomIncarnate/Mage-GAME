@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MagicType } from '../enums/magic-type';
 import { Spell } from '../structs/spell';
-import { rollplus } from './dice.service';
+import { rollplus, two } from './dice.service';
 
 @Injectable({
     providedIn: 'root',
@@ -42,7 +42,7 @@ export class SpellsService {
     }
 
     private rollDamage(level: number): number {
-        return rollplus(12,level);
+        return two(rollplus(6,level));
     }
 
 }

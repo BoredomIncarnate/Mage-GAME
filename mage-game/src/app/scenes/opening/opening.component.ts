@@ -19,8 +19,8 @@ export class OpeningComponent implements OnInit {
     private audioService: AudioService,
     private _router: Router
     ) {
-    this.player = storeService.player;
-    audioService.setTrack(Track.Opening);
+      this.player = this.storeService.player;
+      audioService.setTrack(Track.Opening);
   }
 
   ngOnInit(): void {
