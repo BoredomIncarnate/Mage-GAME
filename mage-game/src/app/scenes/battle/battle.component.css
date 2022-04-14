@@ -3,7 +3,7 @@
     margin-top: 2%;
     margin-left: 2%;
     margin-bottom: 2%;
-    width: 25%;
+    min-width: 25%;
 }
 
 .player-container {
@@ -11,32 +11,31 @@
     margin-top: 2%;
     margin-right: 2%;
     margin-bottom: 2%;
-    width: 70%;
+    min-width: 70%;
 }
 
 #choices {
-    width: auto;
+    min-width: 40%;
+    min-width: 30em;
 }
 
 .info-container {
     float: left;
-    margin: 2%;
-    height: 100%;
-    width: auto;
+    margin-left: 2%;
+    min-width: 20em;
 }
 
 .roll-container {
     float: left;
-    margin: 2%;
-    height: 100%;
-    width: auto;
+    min-width: 30em;
 }
 
 .player-spell-block {
-    display: inline-block;
-    height: 100%;
+    display: inline-flex;
+    margin-bottom: 2%;
 }
 
 .player-choice-block {
-    display: block;
+    display: flex;
+    margin-bottom: 2%;
 }

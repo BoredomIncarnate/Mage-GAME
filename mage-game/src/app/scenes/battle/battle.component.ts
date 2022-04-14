@@ -1,7 +1,10 @@
+import { KeyValue } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MagicType } from 'src/app/enums/magic-type';
 import { AudioService } from 'src/app/services/audio.service';
+import { BattleService } from 'src/app/services/battle.service';
+import { roll } from 'src/app/services/dice.service';
 import { MageService } from 'src/app/services/mage.service';
 import { StoreService } from 'src/app/services/store.service';
 import { Mage } from 'src/app/structs/mage';
@@ -18,12 +21,14 @@ export class BattleComponent implements OnInit {
   defeat: boolean = false;
   currentAction: string = "awaiting";
   chosenSpell: Spell;
-  roll: number = 0;
+  rollValue: number = 0;
+  hasRolled: boolean = false;
 
   constructor(
     private storeService: StoreService,
     private audioService: AudioService,
     private mageService: MageService,
+    private battleService: BattleService,
     private _router: Router) {
       this.player = this.storeService.player;
       this.enemy = this.mageService.generateEnemy();
@@ -39,8 +44,14 @@ export class BattleComponent implements OnInit {
     return MagicType.toString(magicType)
   }
 
+  getDamageToDo(): number {
+    return this.battleService.calculateDamage(this.chosenSpell, this.rollValue, this.enemy)
+  }
+
   playerAttack() {
-    this.enemy.health -= this.chosenSpell.baseDamage;
+    let damageToDo = this.getDamageToDo();
+    this.currentAction = `${this.player.name} did ${damageToDo} damage to ${this.enemy.name}`;
+    this.enemy.health -= damageToDo;
     this.checkDefeat();
   }
 
@@ -56,6 +67,11 @@ export class BattleComponent implements OnInit {
 
   endBattle() {
     this._router.navigate(['opening']);
+  }
+
+  rollMod() {
+    this.rollValue =  roll(3) + roll(this.player.level);
+    this.hasRolled = true;
   }
 
   

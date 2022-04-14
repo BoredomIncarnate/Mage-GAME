@@ -11,8 +11,8 @@ import { StoreService } from './store.service';
 export class MageService {
 
     private enemies: Mage[];
-    private prefixes: string[] = ['stinky', 'bright', 'windy', 'bubbly', 'nice', 'mean', 'sweaty'];
-    private roots: string[] = ['baddy', 'bat', 'worm', 'pan', 'goat', 'cherp', 'ladder'];
+    private prefixes: string[] = ['Stinky', 'Bright', 'Windy', 'Bubbly', 'Nice', 'Mean', 'Sweaty', 'Goopy', 'Moist'];
+    private roots: string[] = ['Baddy', 'Bat', 'Worm', 'Pan', 'Goat', 'Cherp', 'Ladder', 'Tooth', 'Ghost', 'Spirit'];
 
     constructor(private storeService: StoreService) {
         this.enemies = this.storeService.enemies;
