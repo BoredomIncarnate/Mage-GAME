@@ -16,13 +16,17 @@
 
 #choices {
     min-width: 40%;
-    min-width: 30em;
+    min-width: 20em;
 }
 
 .info-container {
     float: left;
     margin-left: 2%;
     min-width: 20em;
+}
+
+.stats-container {
+    margin-right: 1%;
 }
 
 .roll-container {
@@ -38,4 +42,12 @@
 .player-choice-block {
     display: flex;
     margin-bottom: 2%;
+}
+
+.player-health {
+    width: 80%;
+}
+
+.nes-container {
+    margin-top: 2% !important;
 }

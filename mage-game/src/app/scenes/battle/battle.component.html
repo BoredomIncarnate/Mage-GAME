@@ -5,12 +5,20 @@
 </div>
 <div class="enemy-container nes-container with-title">
     <p class="title">{{enemy.name}}!</p>
-    <progress class="nes-progress is-error" value="{{enemy.health}}" max="{{enemy.maxHealth}}"></progress>
+    <progress class="nes-progress is-error" value="{{this.enemy.health}}" max="{{this.enemy.maxHealth}}"></progress>
 </div>
 
 <div class="player-container nes-container with-title">
     <p class="title">{{player.name}}!</p>
+    <div class="nes-container with-title stats-container">
+        <p class="title">Stats</p>
+        <span>
+            <progress class="nes-progress is-primary" value="{{this.player.health}}"
+                max="{{this.player.maxHealth}}"></progress>
+        </span>
+    </div>
     <div class="player-spell-block">
+        
         <div id="choices" class="nes-container with-title">
             <p class="title">Spells</p>
             <div>
