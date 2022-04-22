@@ -19,19 +19,24 @@
     min-width: 20em;
 }
 
+#roll-btn {
+    margin-left: 10pt;
+}
+
 .info-container {
     float: left;
     margin-left: 2%;
-    min-width: 20em;
+    min-width: 40%;
 }
 
 .stats-container {
     margin-right: 1%;
+    min-width: 40%;
 }
 
 .roll-container {
     float: left;
-    min-width: 30em;
+    min-width: 100%;
 }
 
 .player-spell-block {
