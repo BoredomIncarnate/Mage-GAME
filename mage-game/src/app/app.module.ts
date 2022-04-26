@@ -12,6 +12,7 @@ import { BattleComponent } from './scenes/battle/battle.component';
 import { SpellsService } from './services/spells.service';
 import { MageService } from './services/mage.service';
 import { BattleService } from './services/battle.service';
+import { GameManagerService } from './services/game-manager.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BattleService } from './services/battle.service';
     AudioService,
     SpellsService,
     MageService,
-    BattleService
+    BattleService,
+    GameManagerService
   ],
   bootstrap: [AppComponent]
 })

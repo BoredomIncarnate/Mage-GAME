@@ -1,22 +1,22 @@
-/*
-* Dice Service
-* TODO: 
-* -> convert to injectable class
-* -> track how many times what has been rolled
-* -> create die object
-* -> use conventional dnd dice + others
-
-
-*/
-
 import { coin } from "../enums/coin";
+import { dice } from "../enums/dice";
+
+export type d_roll = () => number;
 
 export const roll = (sides: number): number => 1 + Math.floor(Math.random() * sides);
 
-export const rollplus = (sides: number, mod: number): number => roll(sides) + mod;
-
-export const two = (base: number): number => 2 * base;
-
 export const coinFlip = (): coin => roll(2) === 1 ? coin.Heads : coin.Tails;
 
+const roll_die_xtimes = (die: dice, times: number, counter: any = null) => {
+    var total = 0;
+    for (let i = 0; i < times; ++i) {
+        let roll = die;
+        total += roll;
+        if (counter !== null) {
+            // log the dice roll... somehow...
+        }
+    }
+    return total;
+}
 
+export const two = (die: dice) => roll_die_xtimes(die, 2)

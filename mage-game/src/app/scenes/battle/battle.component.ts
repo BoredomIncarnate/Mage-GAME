@@ -5,6 +5,7 @@ import { MagicType } from 'src/app/enums/magic-type';
 import { AudioService } from 'src/app/services/audio.service';
 import { BattleService } from 'src/app/services/battle.service';
 import { roll } from 'src/app/services/dice.service';
+import { GameManagerService } from 'src/app/services/game-manager.service';
 import { MageService } from 'src/app/services/mage.service';
 import { StoreService } from 'src/app/services/store.service';
 import { Mage } from 'src/app/structs/mage';
@@ -31,7 +32,7 @@ export class BattleComponent implements OnInit {
     private battleService: BattleService,
     private _router: Router) {
       this.player = this.storeService.player;
-      this.enemy = this.mageService.generateEnemy();
+      this.enemy = this.mageService.rollEnemy();
       this.chosenSpell = this.player.spells.first;
       console.log(this.chosenSpell);
   }

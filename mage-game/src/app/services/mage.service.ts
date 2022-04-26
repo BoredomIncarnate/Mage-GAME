@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { dice } from '../enums/dice';
 import { MagicType } from '../enums/magic-type';
-import { Mage } from '../structs/mage';
-import { roll, rollplus } from './dice.service';
+import { IMage, Mage } from '../structs/mage';
+import { two } from './dice.service';
 import { StoreService } from './store.service';
 
 @Injectable({
@@ -10,26 +11,22 @@ import { StoreService } from './store.service';
 
 export class MageService {
 
-    private enemies: Mage[];
-    private prefixes: string[] = ['Stinky', 'Bright', 'Windy', 'Bubbly', 'Nice', 'Mean', 'Sweaty', 'Goopy', 'Moist'];
-    private roots: string[] = ['Baddy', 'Bat', 'Worm', 'Pan', 'Goat', 'Cherp', 'Ladder', 'Tooth', 'Ghost', 'Spirit'];
+    private prefixes: string[] = ['Stinky', 'Bright', 'Windy', 'Bubbly', 'Nice', 'Mean', 'Sweaty', 'Goopy', 'Moist', 'Giant'];
+    private roots: string[] = ['Baddie', 'Bat', 'Worm', 'Pan', 'Goat', 'Cherp', 'Ladder', 'Tooth', 'Ghost', 'Spirit', 'Fish'];
 
-    constructor(private storeService: StoreService) {
-        this.enemies = this.storeService.enemies;
-    }
+    constructor(private storeService: StoreService) { }
 
-    generateEnemy() {
-        let enemy = this.rollEnemy();
-        this.storeService.addEnemy(enemy);
-        return enemy;
-    }
+    public rollEnemy = (): IMage => {
 
-    private rollEnemy(): Mage {
-        return new Mage(
+        let enemy =  new Mage(
             this.rollName(), 
             this.rollMagicType(),
             this.rollHealth(),
             this.rollDamage());
+
+        this.storeService.addEnemy(enemy);
+
+        return enemy;
     }
 
     private rollName(): string {
@@ -39,17 +36,10 @@ export class MageService {
         return `${this.prefixes[i]} ${this.roots[j]}`;
     }
 
-    private rollMagicType(): MagicType {
-        return roll(4) - 1;
-    }
+    private rollMagicType = (): MagicType => dice.d4 - 1;
 
-    private rollHealth(): number {
-        let level = this.storeService.player.level;
-        return rollplus(20,level);
-    }
+    private rollHealth= (): number => two(dice.d20);
 
-    private rollDamage(): number {
-        let level = this.storeService.player.level;
-        return rollplus(6,level);
-    }
+    private rollDamage= (): number => dice.d6 + dice.d4;
+    
 }

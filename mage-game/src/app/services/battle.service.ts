@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { MagicType } from '../enums/magic-type';
 import { Mage } from "../structs/mage";
 import { Spell } from "../structs/spell";
+import { action } from '../types';
 import { two } from './dice.service';
-import { StoreService } from './store.service';
 
 @Injectable({
     providedIn: 'root',
@@ -21,6 +21,13 @@ export class BattleService {
         
     }
 
+    public determineDamage = (action: action): number => {
+        if (action.act.type === this.superEffective.get(action.target.type)) {
+            return action.act.baseDamage + (action.mod*2);
+        }
+        return action.act.baseDamage + action.mod;
+    }
+
     calculateDamage(chosenSpell: Spell, mod: number, enemy: Mage): number {
         var totalDamage = chosenSpell.baseDamage;
 
@@ -30,7 +37,5 @@ export class BattleService {
 
         return totalDamage + mod;
     }
-
-    
 
 }

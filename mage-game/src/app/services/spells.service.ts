@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
+import { dice } from '../enums/dice';
 import { MagicType } from '../enums/magic-type';
 import { Spell } from '../structs/spell';
-import { rollplus, two } from './dice.service';
+import { two } from './dice.service';
 
 @Injectable({
     providedIn: 'root',
 })
-
+/*
+* Need to rethink how to use level / make stronger spells
+* 
+*/
 export class SpellsService {
 
     private spells: Spell[] = [];
@@ -14,6 +18,14 @@ export class SpellsService {
     private roots: String[] = [];
 
     constructor() {
+        /*
+        * currently just assigning the array 
+        * might like to pull this from a table or something
+        * or a fusion of both (core + additions from table)
+        * 
+        * would like to lock this down so like readonly if I can make that happen
+        */
+
         this.generatePrefixes();
         this.generateRoots();
     }
@@ -21,18 +33,18 @@ export class SpellsService {
     generateSpell(magicType: MagicType, level: number): Spell {
         var newSpell = {} as Spell;
         newSpell.name = this.rollName();
-        newSpell.baseDamage = this.rollDamage(level);
+        newSpell.baseDamage = this.rollDamage();
         newSpell.type = magicType;
         this.spells.push(newSpell);
         return newSpell;
     }
 
     private generatePrefixes(): void {
-        this.prefixes = ['big', 'red', 'blue', 'green', 'bright', 'buldging', 'gasping']
+        this.prefixes = ['big', 'red', 'blue', 'green', 'bright', 'bulging', 'gasping']
     }
 
     private generateRoots(): void {
-        this.roots = ['magic', 'spell', 'hex', 'chant', 'aura', 'illusion']
+        this.roots = ['magic', 'spell', 'hex', 'chant', 'aura', 'illusion', 'bang']
     }
 
     private rollName(): string {
@@ -41,8 +53,8 @@ export class SpellsService {
         return `${this.prefixes[i]} ${this.roots[j]}`;
     }
 
-    private rollDamage(level: number): number {
-        return two(rollplus(6,level));
+    private rollDamage(): number {
+        return two(dice.d6);
     }
 
 }
